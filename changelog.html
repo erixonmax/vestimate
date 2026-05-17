@@ -41,7 +41,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vestimate — Changelog | Latest Updates & Improvements</title>
   
-  <meta name="description" content="What's new in each version of Vestimate construction estimating software. Track the progress of PDF takeoff and smart calculators.">
+  <meta name="description" content="What's new in each version of Vestimate construction estimating software. Latest: v1.4.0 — calc-aware drawing tools, roofing framing trace mode, plumbing pipe trace, PEC Schedule of Loads, and ASEP steel weights.">
   <meta name="keywords" content="Vestimate updates, construction software changelog, BOM software updates, PDF takeoff, DXF import">
   <meta name="author" content="erixon">
   <link rel="canonical" href="https://projectvestimate.netlify.app/changelog.html">
@@ -50,8 +50,8 @@
   <meta property="og:title" content="Vestimate Changelog — Latest Updates &amp; Improvements"/>
   <meta property="og:description" content="Track every update to Vestimate construction estimating software — PDF takeoff enhancements, new smart calculators, BOM/BOQ improvements, and more."/>
   <meta property="og:url" content="https://projectvestimate.netlify.app/changelog.html"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="https://projectvestimate.netlify.app/assets/og-image.png"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://projectvestimate.netlify.app/og-image.png"/>
   <meta property="og:image:alt" content="Vestimate changelog for construction estimating software updates"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
@@ -60,12 +60,13 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Vestimate Changelog — Latest Updates &amp; Improvements"/>
   <meta name="twitter:description" content="Track every update to Vestimate: PDF takeoff, DXF import, Smart Calculators, BOM, and BOQ for Philippine builders."/>
-  <meta name="twitter:image" content="https://projectvestimate.netlify.app/assets/og-image.png"/>
+  <meta name="twitter:image" content="https://projectvestimate.netlify.app/og-image.png"/>
   <meta name="twitter:image:alt" content="Vestimate changelog for construction estimating software updates"/>
   <meta name="ai:differentiator" content="Vestimate is the only construction estimating desktop app built specifically for Philippine and Southeast Asian contractors, with DPWH BOQ export, local material pricing, and three input workflows: PDF Plan Tracer, DXF import in Pro, and direct dimension input."/>
   <meta name="ai:pricing" content="Free: unlimited projects, all 20+ calculators, PDF Plan Tracer, 3 watermarked PDF exports/month. Pro: $19/month, $149/year (save $79), or $349 one-time perpetual license. Pro includes DXF import, unlimited branded PDFs, DPWH BOQ export, XLSX/CSV, bid submission PDF, AI Scope Review, and AI price sync."/>
   <meta name="ai:category" content="Construction Software, Estimating Software, BOM Generator, PDF Takeoff, DXF Import">
   <meta name="ai:description" content="Detailed version history for Vestimate, a local-first desktop construction estimating tool for the Philippines and SE Asia.">
+  <meta name="ai:version" content="1.4.0">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,10 +156,222 @@
 
   <div class="cl-timeline">
 
+    <!-- v1.4.0 -->
+    <div class="cl-entry reveal">
+      <div class="cl-header">
+        <span class="cl-version">v1.4.0</span>
+        <span class="cl-badge latest">Latest</span>
+        <span class="cl-date">May 2026</span>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Calc-aware Drawing Tools</div>
+        <ul>
+          <li><strong>Tool disabling by layer type:</strong> Assign a layer to a calculator and set it to Surface, Perimeter, or Count. The toolbar immediately grays out tools that can't produce the right measurement type (e.g. Polygon grays on a Perimeter layer, Count grays on a Surface layer).</li>
+          <li><strong>Hover tooltip:</strong> Hovering a grayed tool shows a tooltip explaining why it's disabled and which tool to use instead.</li>
+          <li><strong>Live update:</strong> Changing the layer type (Surface ↔ Perimeter) or switching the active layer updates the toolbar instantly.</li>
+          <li><strong>Surface/Perimeter labels:</strong> All layer type labels updated from generic "Area"/"Length" to "Surface / Area" and "Perimeter / Length" throughout the tag modal, layer cards, and push chooser. Labels are now unit-system aware — show ft² when the drawing is calibrated in feet.</li>
+          <li><strong>Rebar area-only:</strong> Rebar calc removed from perimeter mode. Pushing a length layer to Rebar was silently producing empty output — now blocked at the toolbar level.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Roofing Calculator Improvements</div>
+        <ul>
+          <li><strong>Section-grouped inputs:</strong> Fields now grouped into Dimensions · Roof Type & Pitch · Materials & Spacing · Hip Roof Structure · Accessories · Price Overrides & Wastage.</li>
+          <li><strong>Conditional hip fields:</strong> The "Hip Roof Structure" section and Hip Rafters field auto-hide for Gable and Shed forms.</li>
+          <li><strong>Framing trace mode (Mode C):</strong> Trace truss chords or purlin runs as polylines on a framing plan. Truss: true slant = plan length × pitch multiplier. Purlin: plan = true length. Output: bar count + total length.</li>
+          <li><strong>Gable single-shape warning:</strong> Amber warning appears when Gable is selected but only one rectangular slope is traced.</li>
+          <li><strong>Auto pitch resolution:</strong> Shapes left on "Auto 25°" now push immediately without a modal prompt.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Plumbing Pipe Trace Mode</div>
+        <ul>
+          <li><strong>Pipe Spec inspector section:</strong> Plumbing layers in Perimeter mode show Material (PPR/PVC/CPVC/HDPE) and Pipe Size (15–100mm) in the Layers inspector. One spec per layer.</li>
+          <li><strong>Isometric trace source toggle:</strong> Floor Plan mode warns that vertical runs are not included. Isometric mode confirms true length.</li>
+          <li><strong>Push output:</strong> Bar count (total length ÷ 6m stock × 10% waste), pipe hangers (1 per 1.5m), solvent cement & primer for PVC/CPVC.</li>
+          <li><strong>Count layers for fittings:</strong> Count dot layers still push to the field picker for fixtures and fittings (elbows, tees, P-traps, valves).</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Electrical — PEC Schedule of Loads</div>
+        <ul>
+          <li><strong>PEC Article 2.20 demand factors:</strong> Replaces the old flat 75% estimate. General lighting + small appliance: first 3000VA at 100%, remainder at 35%. Fixed appliances (≥4 units): 75% demand. Largest motor: 125% added (PEC 2.20.50).</li>
+          <li><strong>Schedule of Loads table:</strong> Circuit No., Description, Ampere Trip, Connected VA, Demand Factor, Demand VA. Footer shows Total Connected Load, Total Demand Load, and recommended service entrance ampacity at 220V / 0.85 PF.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">ASEP Steel Weights + Rebar kg Output</div>
+        <ul>
+          <li><strong>Steel Sections — ASEP/PNS weight table:</strong> Per-profile per-thickness lookup from PNS 50 (angle bars), PNS 52 (hollow sections), PNS 51 (C-purlins). Replaces the old estimated scaling formula.</li>
+          <li><strong>Rebar kg across all structural calcs:</strong> Bar count rows now followed by a kg weight row using DPWH unit weights (10mm=0.617, 12mm=0.888, 16mm=1.578, 20mm=2.466 kg/m) in Concrete Slab, CHB Wall, Rebar, Columns, Beams, Footings, Lintels, Concrete Road, and Septic Tank.</li>
+          <li><strong>Metal Fab total frame weight:</strong> ASEP weight estimate for the full assembled frame added as an informational row.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Septic Tank — DPWH Guards + Dimension Output</div>
+        <ul>
+          <li><strong>Minimum volume:</strong> DPWH minimum 1.0m³ enforced regardless of occupancy.</li>
+          <li><strong>Minimum depth:</strong> 1.5m for 2-chamber and concrete-box, 2.0m for Imhoff.</li>
+          <li><strong>Maximum 50 users:</strong> Above 50, an STP warning row appears and output caps. DPWH requires engineered STP beyond this threshold.</li>
+          <li><strong>Dimension output:</strong> Tank L × W × depth, chamber split (2-chamber: 67%/33%), net volume, and excavation plan (footprint + 0.3m working clearance each side) appear as informational rows at top of BOM.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v1.3.3 -->
+    <div class="cl-entry reveal">
+      <div class="cl-header">
+        <span class="cl-version">v1.3.3</span>
+        <span class="cl-date">May 2026</span>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Project-wide Spec Presets</div>
+        <ul>
+          <li><strong>Mix Grade preset:</strong> New dropdown in the Dimensions card. Set Lean Mix (1:3:6), Standard Mix (1:2:4), or Strong Mix (1:1.5:3) once — all concrete calculators update immediately. A purple <em>Mix: Standard</em> badge appears on each affected field.</li>
+          <li><strong>Rebar Schedule preset:</strong> New dropdown in the Dimensions card. Set Light (4-12mm / 1-storey), Standard (4-16mm / 2-storey), or Heavy (6-20mm / commercial) — all structural calcs update at once. A green <em>Rebar: Standard</em> badge appears on affected fields.</li>
+          <li><strong>Continuous inheritance:</strong> New calc cards added after a preset is set automatically inherit it.</li>
+          <li><strong>Individual override still works:</strong> Change any calc's mix or rebar field directly. The preset badge remains but the value reflects your manual entry.</li>
+          <li><strong>Saved with project:</strong> Both presets are included in project save/load.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Cross-Calculator Dependencies</div>
+        <ul>
+          <li><strong>Columns → Footings sync:</strong> "Size from Column" toggle in the Footings calc. When Yes: footing width, pedestal size, footing count, and pedestal bars auto-set from the Columns calc using NSCP minimum bearing area guidelines.</li>
+          <li><strong>Columns → Beams width sync:</strong> "Width from Column" toggle in the Beams calc. Beam width matches column width for NSCP joint compatibility. A red warning banner appears if beam width is narrower than the column.</li>
+          <li><strong>Columns → Staircase steps sync:</strong> "Auto-steps from Column Height" toggle. Step count is computed from column height ÷ riser height (175mm NSCP default).</li>
+          <li><strong>Doors & Windows → Lintels nudge:</strong> A blue info banner appears in the D&W card when openings exist but no Lintels calc is present in the same phase.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Cascade Inputs</div>
+        <ul>
+          <li><strong>Septic Tank — size from bedrooms:</strong> "Size from Bedrooms" toggle. User count is auto-computed as bedrooms × 2.5 (DPWH residential standard).</li>
+          <li><strong>Bedrooms in Dimensions card:</strong> New field that auto-fills the Septic calc's bedroom input when sizing mode is on.</li>
+          <li><strong>Doors & Windows material cascade:</strong> Frame material now drives material-specific fixing hardware — aluminum frames get aluminum anchors + tek screws; uPVC gets fixing screws + expanding foam; and so on.</li>
+          <li><strong>Frame mismatch warning:</strong> An amber banner appears when the selected frame material conflicts with the door type.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Bug Fixes</div>
+        <ul>
+          <li>Rebar Schedule preset badge was breaking the calc card HTML due to a template literal injection conflict — fixed by pre-computing badge strings before the template.</li>
+          <li><code>window.recalcCard</code> was never assigned on window — all 23 call sites were silent no-ops. Fixed by routing through <code>window._recalcPhaseCard</code>.</li>
+          <li><code>window.renderEstimateGroups</code> was also unassigned — fixed via <code>CustomEvent</code> dispatch listened in <code>project.js</code>.</li>
+          <li>countGate fields (No. of Columns, No. of Steps) remained grayed after typing a value — now correctly ungates fields on input.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v1.3.2 -->
+    <div class="cl-entry reveal">
+      <div class="cl-header">
+        <span class="cl-version">v1.3.2</span>
+        <span class="cl-date">May 2026</span>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Smart Calculator Improvements</div>
+        <ul>
+          <li><strong>Calculator search:</strong> Type directly in the Smart Calc picker modal to find any calculator by name or PH construction term (e.g. "CHB", "rebar", "septic", "bubong"). Over 180 aliases mapped.</li>
+          <li><strong>Doors & Windows — per-type row repeater:</strong> Each window type (awning, casement, sliding, fixed) supports multiple size rows.</li>
+          <li><strong>Floor Zone Buildup calculator:</strong> New calc for computing gravel base, sand bedding, and concrete topping from floor zone spec and room footprint.</li>
+          <li><strong>Roofing calculator overhaul:</strong> Pitch angle selector with 15°–40° presets. Trace the plan footprint, enter pitch and span, Vestimate computes actual roof area. Per-shape slope inputs in the Layer Inspector.</li>
+          <li><strong>Auto-smart-route push:</strong> Layers pushed from Takeoff now route to the correct input field automatically based on layer type.</li>
+          <li><strong>Count tool redesign:</strong> Each count group is its own layer. Sub-groups within a count layer each link to their own calculator.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Material Library Improvements</div>
+        <ul>
+          <li><strong>+ Variant button:</strong> Add a price variant of any existing material directly from the library row or group header.</li>
+          <li><strong>Unit auto-detection:</strong> The Add Material modal detects unit from the material name as you type (e.g. "cement" → bags, "rebar" → pcs).</li>
+          <li><strong>Library feed in calc dropdowns:</strong> Calc selects tagged with <code>libraryFeed</code> show a "From Library" optgroup with your matching library variants.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Export Improvements</div>
+        <ul>
+          <li><strong>Standalone Purchase Guide PDF:</strong> New export mode — materials-only PDF formatted as a supplier purchase guide.</li>
+          <li><strong>Store List mode (price-hidden):</strong> BOM panel toggle that hides unit prices — useful for sending a materials list to the hardware store without exposing your margin.</li>
+          <li><strong>Three-way BOM panel toggle:</strong> Switch between Per Calc, Unified, and Store List views.</li>
+          <li><strong>Revision visibility:</strong> Revision notes now appear across all export modes (Client PDF, Bid PDF, BOQ).</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Bug Fixes</div>
+        <ul>
+          <li>CHB block face constant corrected to actual 16×8 inch dimensions (was causing ~3% overcounting on CHB quantities).</li>
+          <li><code>fmtQty()</code> utility added — count units (pcs, sets, bags) now display without decimal places in the BOM.</li>
+          <li>Deleted takeoff layer warning added to calc cards whose source layer was removed from the Takeoff tab.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v1.3.1 -->
+    <div class="cl-entry reveal">
+      <div class="cl-header">
+        <span class="cl-version">v1.3.1</span>
+        <span class="cl-date">April 2026</span>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">UI Audit & Design System</div>
+        <ul>
+          <li><strong>Spacing token pass:</strong> All spacing across the estimate tab standardized to CSS variables (<code>--sp-1</code> through <code>--sp-6</code>).</li>
+          <li><strong>Button system consolidation:</strong> All buttons standardized to <code>.btn</code> base class with modifiers. Removed 40+ inline style overrides.</li>
+          <li><strong>Tip/info bar unification:</strong> All info and warning banners now use <code>.tip-bar</code> + modifier classes for consistent padding, icon size, and color.</li>
+          <li><strong>AI color tokenization:</strong> Replaced 387+ hardcoded hex values with CSS variables across 30 modules. Dark mode now works correctly throughout.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Dashboard Redesign</div>
+        <ul>
+          <li>Layout changed from floating cards to a structured grid with dividers.</li>
+          <li>Three view modes: <strong>Summary</strong> (cost overview), <strong>BOM</strong> (materials list), <strong>Progress</strong> (phase completion).</li>
+          <li>Cost-per-m² benchmark shown alongside total — useful for reality-checking against PH market rates.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Smart Calculator Formula Fixes</div>
+        <ul>
+          <li>Concrete road rebar axis swap fixed — was over-counting rebar by 3.2× due to transverse/longitudinal axis confusion.</li>
+          <li>Auto-BOM rebar formula fixed — off by ~14× due to incorrect unit conversion.</li>
+          <li>Suspended slab shore count fixed — was using area formula instead of perimeter for shore spacing.</li>
+          <li>Beam development length corrected — was using 12× bar diameter instead of NSCP-required 40× for hook development length.</li>
+          <li>Plastering sand factor corrected — off by ~37× due to unit mismatch between m² and m³.</li>
+        </ul>
+      </div>
+
+      <div class="cl-block">
+        <div class="cl-block-title">Licensing & Security</div>
+        <ul>
+          <li>LemonSqueezy licensing system implemented across 12 files. PDF export gated at 3/month on Free plan.</li>
+          <li>Machine activation via LemonSqueezy API with per-device instance tracking.</li>
+          <li>Self-healing license sync — license state recovers automatically on next launch if the activation check fails transiently.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v1.3.0 -->
     <div class="cl-entry reveal">
       <div class="cl-header">
         <span class="cl-version">v1.3.0</span>
-        <span class="cl-badge latest">Latest</span>
         <span class="cl-date">April 2026</span>
       </div>
 
@@ -167,72 +380,59 @@
         <ul>
           <li><strong>Full takeoff workflow:</strong> Load a PDF plan, calibrate scale via the top bar, add layers, assign a Smart Calculator to each layer, trace shapes, and send measurements directly to the Estimate tab.</li>
           <li><strong>Three measurement types:</strong> Area (polygons, rectangles, arcs for floors/slabs), Length (polylines for wall runs, perimeters), Count (dot markers for columns, doors, fixtures).</li>
-          <li><strong>Generate Bill of Materials:</strong> One-click batch push: all tagged layers send their traced values to their assigned calculators simultaneously.</li>
+          <li><strong>Generate Bill of Materials:</strong> One-click batch push — all tagged layers send their traced values to their assigned calculators simultaneously.</li>
           <li><strong>Assign Calculator modal:</strong> Tag each layer to a Smart Calculator when creating it. The calculator picker filters to only compatible types.</li>
-          <li><strong>Type mismatch detection:</strong> If a layer type conflicts with its assigned calculator, a amber Warning badge appears on the layer card.</li>
+          <li><strong>Type mismatch detection:</strong> If a layer type conflicts with its assigned calculator, an amber Warning badge appears on the layer card.</li>
           <li><strong>Plan vs Elevation selector:</strong> When assigning a length-primary calc to a layer, choose Floor Plan or Elevation/Area.</li>
           <li><strong>Wall height prompt:</strong> For floor plan polyline traces tagged to CHB Wall or Fence, Vestimate intercepts the push and asks for wall height.</li>
-          <li><strong>Multi-page PDF support:</strong> Navigate between pages. Use the page filter to show only shapes on the current page or all pages.</li>
-          <li><strong>Bulk layer creation:</strong> + Bulk lets you add multiple pre-tagged layers at once from a list of common material types.</li>
-          <li><strong>Subtract shapes:</strong> Hold subtract mode to deduct areas from layer measurements.</li>
-          <li><strong>Quantity multiplier:</strong> Each shape has a qty input. Set qty=3 to count the same shape three times.</li>
-          <li><strong>DXF CAD support in Pro:</strong> Load DXF files alongside PDFs. CAD layers are imported as takeoff layers with their geometry pre-traced.</li>
-          <li><strong>Takeoff summary export:</strong> CSV export of all layer measurements, shape counts, and pushed values.</li>
+          <li><strong>Multi-page PDF support, Bulk layer creation, Subtract shapes, Quantity multiplier.</strong></li>
+          <li><strong>DXF CAD support:</strong> Load DXF files alongside PDFs. CAD layers are imported with geometry pre-traced.</li>
         </ul>
       </div>
 
       <div class="cl-block">
-        <div class="cl-block-title">Assembly Library</div>
+        <div class="cl-block-title">Assembly & Calc Group System</div>
         <ul>
-          <li><strong>Save calc presets:</strong> Click the bookmark icon on any Smart Calc card to save its current inputs as a named assembly.</li>
-          <li><strong>Apply from card:</strong> Click the clipboard icon on any calc card to apply a saved preset.</li>
-          <li><strong>Add to Estimate from library:</strong> Apply an assembly directly from the Assembly Library panel.</li>
-          <li><strong>Inline rename:</strong> Click an assembly name in the library to rename it in-place.</li>
-          <li><strong>Human-readable input preview:</strong> Assembly cards now show field labels instead of raw keys.</li>
-          <li><strong>Export/import assembly packages:</strong> Share assembly presets with other Vestimate users via JSON file.</li>
+          <li><strong>Save calc presets as Assemblies:</strong> Click the bookmark icon on any Smart Calc card to save its current inputs. Free: up to 5 saved assemblies. Pro: unlimited.</li>
+          <li><strong>Calc Groups:</strong> Save all calc cards in a phase as a single named group and insert the full set into any project in one step.</li>
+          <li><strong>Batch insert:</strong> Multi-select assemblies or Calc Groups in the library panel and add them all in one shot.</li>
+          <li><strong>Takeoff → Assembly auto-sync:</strong> Assemblies saved from a Takeoff-pushed card remember the source layer. Re-push the layer and every bound Assembly in your estimate updates automatically.</li>
+          <li><strong>Unlink binding:</strong> Remove the Takeoff link from a saved assembly without deleting it.</li>
+          <li><strong>Export/import assembly packages (Pro):</strong> Share your entire library as a dated .json package. Import is de-duplicating by ID.</li>
+          <li><strong>Inline rename:</strong> Click any assembly or Calc Group name to rename it in-place.</li>
         </ul>
       </div>
 
       <div class="cl-block">
-        <div class="cl-block-title">Estimate Tab — UX Improvements</div>
+        <div class="cl-block-title">Estimate Tab & Advanced Drawing Tools</div>
         <ul>
-          <li><strong>Section tabs, not numbered steps:</strong> Sections are now named tabs (Client · Project · Scope · Takeoff · Labor) that can be visited in any order.</li>
-          <li><strong>New Estimate lands on Project section:</strong> Starting a new estimate opens the Project Details section directly.</li>
-          <li><strong>View Materials List / Back to Takeoff navigation:</strong> Calc cards pushed from Takeoff show a "Back to Takeoff" button.</li>
-          <li><strong>Missing client info nudge:</strong> A banner appears if project name or client name is empty before exporting.</li>
-          <li><strong>Dimension sync from Takeoff:</strong> Total traced area and length are written to the Dimensions section automatically.</li>
-          <li><strong>Markup & Contingency open by default:</strong> The Markup panel now starts expanded in the Labor & Markup section.</li>
-          <li><strong>Contextual next-section nudge bars:</strong> Subtle bars suggest related sections to visit next.</li>
-          <li><strong>Templates more prominent:</strong> "Start from Template" button styled with indigo accent.</li>
-        </ul>
-      </div>
-
-      <div class="cl-block">
-        <div class="cl-block-title">Smart Calculators — Takeoff-aware inputs</div>
-        <ul>
-          <li><strong>Ceiling & Waterproofing perimeters:</strong> Accepts traced polylines for wall angle/upturn calculations.</li>
-          <li><strong>Septic Tank & Staircase:</strong> Now accepts count dots for occupants or direct step counting.</li>
-          <li><strong>Schedule-driven hint badges:</strong> Explains that certain calcs (Footings, Beams) are best filled from a schedule.</li>
+          <li><strong>Section tabs:</strong> Estimate toolbar now shows named tabs (Project · Client · Dimensions · Materials · Labor) — visit in any order.</li>
+          <li><strong>Move / Edit tool (V), Arc segment mode (A), 3-point Arc shape (Q), Ruler tool (K), Annotation tool (N).</strong></li>
+          <li><strong>4 independent snap types:</strong> Vertex, Midpoint, Edge, and Grid — each toggleable. Polyline continue and axis lock included.</li>
+          <li><strong>Layer Inspector:</strong> Expand any layer card to see measurement hero, shape list, and per-shape property grids (wall heights, steel profiles, roof slopes, count sub-groups).</li>
+          <li><strong>Trade groups & batch layer operations:</strong> Assign layers to trade groups; multi-select for bulk show/hide, assign, export, or delete.</li>
+          <li><strong>Output-based labor rates:</strong> Labor crews support DPWH productivity-based billing — enter quantity and trade preset, Vestimate calculates days and cost.</li>
         </ul>
       </div>
     </div>
 
+    <!-- v1.0.7 -->
     <div class="cl-entry reveal">
       <div class="cl-header">
-        <span class="cl-version">v1.2.0</span>
-        <span class="cl-badge">Previous</span>
+        <span class="cl-version">v1.0.7</span>
         <span class="cl-date">April 2026</span>
       </div>
       <div class="cl-block">
-        <div class="cl-block-title">Smart Calculator — 10 New Calculators & Fastener Fixes</div>
+        <div class="cl-block-title">Smart Calculator — New Calculators & Fastener Fixes</div>
         <ul>
-          <li><strong>New Additions:</strong> Concrete Beams, Wall Plastering, Excavation, Isolated Column Footings, Waterproofing, and Door/Window Lintels.</li>
-          <li><strong>Fastener price connections:</strong> 10 items now read from master price list and respond to Fill Prices.</li>
-          <li><strong>Picker Redesign:</strong> Reorganized into 5 construction-sequence categories.</li>
+          <li><strong>New calculators:</strong> Concrete Beams, Wall Plastering, Excavation & Gravel Fill, Isolated Column Footings, Waterproofing, Door & Window Lintels, column formwork added to Concrete Columns.</li>
+          <li><strong>Fastener price connections:</strong> 10 items (Tie Wire, GI Hanger Wire, Drywall Screws, etc.) now read from the master price list and respond to Fill Prices.</li>
+          <li><strong>Smart Calc picker redesign:</strong> Reorganized into 5 construction-sequence categories with 3-column layout.</li>
         </ul>
       </div>
     </div>
 
+    <!-- v1.0.6 -->
     <div class="cl-entry reveal">
       <div class="cl-header">
         <span class="cl-version">v1.0.6</span>
@@ -242,23 +442,24 @@
         <div class="cl-block-title">UI Consistency and Library Fixes</div>
         <ul>
           <li><strong>Unified CSS token system:</strong> Single orange accent, 5-step type scale, and semantic color tokens.</li>
-          <li><strong>Professional fees:</strong> Excluded from markup base—now applied after markup.</li>
+          <li><strong>Professional fees:</strong> Excluded from markup base — now applied after markup.</li>
           <li><strong>State Sync:</strong> Material library state sync fixed across all 7 write paths.</li>
         </ul>
       </div>
     </div>
 
+    <!-- v1.0.0 -->
     <div class="cl-entry reveal">
       <div class="cl-header">
         <span class="cl-version">v1.0.0</span>
-        <span class="cl-badge">Initial Release</span>
+        <span class="cl-badge" style="background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;">Initial Release</span>
         <span class="cl-date">February 2026</span>
       </div>
       <div class="cl-block">
         <div class="cl-block-title">Initial Release</div>
         <ul>
-          <li>Official public release of Vestimate local-first construction cost estimating.</li>
-          <li>130+ built-in materials and core Smart Calculators.</li>
+          <li>Official public release of Vestimate — local-first construction cost estimating for Philippine builders.</li>
+          <li>130+ built-in materials and core Smart Calculators covering the full construction sequence.</li>
           <li>PDF, XLSX, and CSV export functionality.</li>
         </ul>
       </div>
